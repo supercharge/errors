@@ -5,10 +5,10 @@
   <br/>
   <br/>
   <p>
-    <h3>Set</h3>
+    <h3>Errors</h3>
   </p>
   <p>
-    An Array-aligned <code>Set</code> class and the one JavaScript should have shipped
+    JavaScript error classes with useful defaults
   </p>
   <br/>
   <p>
@@ -30,12 +30,7 @@
 ---
 
 ## Introduction
-The `@supercharge/errors` package provides an improved [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) implementation.
-
-- aligned with the `Array` class instead of `Map`
-- provides helpful methods like `.map(callback)`, `.filter(callback)`, `.find(callback)`, `.isEmpty()`, and many more.
-- compares values for `deep equality` and not `reference`
-- it’s the `Set` class JavaScript should have shipped
+The `@supercharge/errors` package provides improved `Error` classes.
 
 
 ## Installation
@@ -45,37 +40,19 @@ npm i @supercharge/errors
 ```
 
 
-## Resources
-
-- [Documentation](https://superchargejs.com/docs/set)
-
-
 ## Quick Usage Overview
-Using `@supercharge/errors` is pretty straightforward. The package exports a `Set` class providing all methods to interact with the set.
+Using `@supercharge/errors` is pretty straightforward. The package exports error classes that you can use like the native `Error` class.
 
 ```js
-const Set = require('@supercharge/errors')
+const { Error, HttpError } = require('@supercharge/errors')
 
-const users = new Set()
+throw new Error('your error message')
 
-users.isEmpty() // true
-
-users
-  .add({ id: 1, name: 'Marcus' })
-  .add({ id: 2, name: 'Norman' })
-  .add({ id: 3, name: 'Christian' })
-
-users.isNotEmpty() // true
-
-const usernames = users.map(user => {
-  return user.name
-})
-// [ 'Marcus', 'Norman', 'Christian' ]
-
-const marcus = users.find(user => {
-  return user.name === 'Marcus'
-})
-// { id: 1, name: 'Marcus' }
+throw new HttpError('Request validation failed', 400, 'E_YOUR_CUSTOM_ERROR_CODE')
+// or use fluent methods
+throw new HttpError('Request validation failed')
+  .withStatus(400)
+  .withCode('E_YOUR_CUSTOM_ERROR_CODE')
 ```
 
 
