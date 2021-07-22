@@ -29,7 +29,11 @@
 ---
 
 ## Introduction
-The `@supercharge/errors` package provides improved `Error` classes.
+The `@supercharge/errors` package provides error classes with useful defaults. This avoids the boilerplate of setting up a custom error class in different projects.
+
+- provides an `Error` base class capturing the stack trace by default
+- every error has a `name` property providing the error’s class name
+- exposes an `HttpError` class with HTTP `status` and error `code` properties
 
 
 ## Installation
@@ -45,13 +49,17 @@ Using `@supercharge/errors` is pretty straightforward. The package exports error
 ```js
 const { Error, HttpError } = require('@supercharge/errors')
 
+// works like the native `Error` class and also contains the stacktrace
 throw new Error('your error message')
 
-throw new HttpError('Request validation failed', 400, 'E_YOUR_CUSTOM_ERROR_CODE')
-// or use fluent methods
+// the HTTP Error provides a fluent interface to customize the properties
 throw new HttpError('Request validation failed')
   .withStatus(400)
   .withCode('E_YOUR_CUSTOM_ERROR_CODE')
+
+// or create an HTTP error by passing all arguments to the constructor
+throw new HttpError('Request validation failed', 400, 'E_YOUR_CUSTOM_ERROR_CODE')
+
 ```
 
 
