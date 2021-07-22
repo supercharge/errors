@@ -7,6 +7,11 @@ export class BaseError extends Error {
   public message: string
 
   /**
+   * Stores the error class name.
+   */
+  public name: string
+
+  /**
    * Create a new error instance for the given `message`.
    *
    * @param message
