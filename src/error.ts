@@ -12,6 +12,11 @@ export class BaseError extends Error {
   public name: string
 
   /**
+   * Stores the error stacktrace.
+   */
+  public stack: string
+
+  /**
    * Create a new error instance for the given `message`.
    *
    * @param message
@@ -23,6 +28,7 @@ export class BaseError extends Error {
     this.message = message ?? ''
     this.name = this.constructor.name
 
+    this.stack = '' // next line overrides this with the actual stack trace
     Error.captureStackTrace(this, this.constructor)
   }
 }
