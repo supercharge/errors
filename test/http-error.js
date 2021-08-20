@@ -21,6 +21,7 @@ test('HttpError', async () => {
 
     t.equal(error.message, 'failed')
     t.equal(error.status, 401)
+    t.equal(error.title, 'HttpError')
     t.equal(error.code, 'APP_ERROR_CODE')
     t.ok(error.stack)
   })
@@ -37,5 +38,12 @@ test('HttpError', async () => {
 
     t.equal(error.message, 'failed')
     t.equal(error.code, 'E_FAILED_TO_READ_FILE')
+  })
+
+  test('withTitle', async t => {
+    const error = new HttpError('failed').withTitle('Bad Request')
+
+    t.equal(error.message, 'failed')
+    t.equal(error.title, 'Bad Request')
   })
 })

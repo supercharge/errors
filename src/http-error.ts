@@ -14,6 +14,11 @@ export class HttpError extends BaseError {
   public code?: string
 
   /**
+   * Stores the error title, like 'Bad Request' or 'Internal Server Error'.
+   */
+  public title: string
+
+  /**
    * Create a new HTTP error instance for the given `message` and `status`.
    *
    * @param {String} message
@@ -23,6 +28,7 @@ export class HttpError extends BaseError {
     super(message)
 
     this.status = status ?? 500
+    this.title = this.name
     this.code = code
   }
 
@@ -50,6 +56,19 @@ export class HttpError extends BaseError {
    */
   withCode (code: string): this {
     this.code = code
+
+    return this
+  }
+
+  /**
+   * Assign a specific error title, like `Bad Request`.
+   *
+   * @param {String} title
+   *
+   * @returns {this}
+   */
+  withTitle (title: string): this {
+    this.title = title
 
     return this
   }
