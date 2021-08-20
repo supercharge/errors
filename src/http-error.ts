@@ -19,12 +19,14 @@ export class HttpError extends BaseError {
   public title: string
 
   /**
-   * Create a new HTTP error instance for the given `message` and `status`.
+   * Create a new HTTP error instance for the given `message`, `status`, and `code`.
+   * Defaults to HTTP status code `500` when skipping the `status` parameter.
+   * Defaults to no error code when skipping the `code` parameter.
    *
    * @param {String} message
    * @param {Number} status
    */
-  constructor (message: string, status: number, code?: string) {
+  constructor (message: string, status?: number, code?: string) {
     super(message)
 
     this.status = status ?? 500

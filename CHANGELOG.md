@@ -1,13 +1,16 @@
 # Changelog
 
 
+## [1.3.0](https://github.com/supercharge/strings/compare/v1.2.0...v1.2.1) - 2021-08-xx
+
+### Updated
+- make `status` argument optional and default to 500 in `HttpError`
+
+
 ## [1.2.0](https://github.com/supercharge/strings/compare/v1.1.0...v1.2.0) - 2021-08-20
 
 ### Added
 - public `stack` property to the `Error` class ensuring the stacktrace is available
-
-### Updated
-- bump dependencies
 
 
 ## [1.1.0](https://github.com/supercharge/strings/compare/v1.0.0...v1.1.0) - 2021-08-20
