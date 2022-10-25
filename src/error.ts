@@ -4,17 +4,17 @@ export class BaseError extends Error {
   /**
    * Stores the error message.
    */
-  public message: string
+  public override message: string
 
   /**
    * Stores the error class name.
    */
-  public name: string
+  public override name: string
 
   /**
    * Stores the error stacktrace.
    */
-  public stack: string
+  public override stack: string
 
   /**
    * Create a new error instance for the given `message`.
