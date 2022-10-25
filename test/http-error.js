@@ -1,49 +1,50 @@
 'use strict'
 
-const { test } = require('tap')
+const { test } = require('uvu')
+const { expect } = require('expect')
 const { HttpError } = require('../dist')
 
-test('HttpError', async () => {
-  test('has a name', async t => {
-    const error = new HttpError()
+test('has a name', async t => {
+  const error = new HttpError()
 
-    t.equal(error.name, 'HttpError')
-  })
-
-  test('defaults to status 500', async t => {
-    const error = new HttpError()
-
-    t.equal(error.status, 500)
-  })
-
-  test('can access properties', async t => {
-    const error = new HttpError('failed', 401, 'APP_ERROR_CODE')
-
-    t.equal(error.message, 'failed')
-    t.equal(error.status, 401)
-    t.equal(error.title, 'HttpError')
-    t.equal(error.code, 'APP_ERROR_CODE')
-    t.ok(error.stack)
-  })
-
-  test('withStatus', async t => {
-    const error = new HttpError('failed').withStatus(400)
-
-    t.equal(error.message, 'failed')
-    t.equal(error.status, 400)
-  })
-
-  test('withCode', async t => {
-    const error = new HttpError('failed').withCode('E_FAILED_TO_READ_FILE')
-
-    t.equal(error.message, 'failed')
-    t.equal(error.code, 'E_FAILED_TO_READ_FILE')
-  })
-
-  test('withTitle', async t => {
-    const error = new HttpError('failed').withTitle('Bad Request')
-
-    t.equal(error.message, 'failed')
-    t.equal(error.title, 'Bad Request')
-  })
+  expect(error.name).toEqual('HttpError')
 })
+
+test('defaults to status 500', async t => {
+  const error = new HttpError()
+
+  expect(error.status).toEqual(500)
+})
+
+test('can access properties', async t => {
+  const error = new HttpError('failed', 401, 'APP_ERROR_CODE')
+
+  expect(error.status).toEqual(401)
+  expect(error.message).toEqual('failed')
+  expect(error.title).toEqual('HttpError')
+  expect(error.code).toEqual('APP_ERROR_CODE')
+  expect(error.stack).toBeDefined()
+})
+
+test('withStatus', async t => {
+  const error = new HttpError('failed').withStatus(400)
+
+  expect(error.status).toEqual(400)
+  expect(error.message).toEqual('failed')
+})
+
+test('withCode', async t => {
+  const error = new HttpError('failed').withCode('E_FAILED_TO_READ_FILE')
+
+  expect(error.message).toEqual('failed')
+  expect(error.code).toEqual('E_FAILED_TO_READ_FILE')
+})
+
+test('withTitle', async t => {
+  const error = new HttpError('failed').withTitle('Bad Request')
+
+  expect(error.message).toEqual('failed')
+  expect(error.title).toEqual('Bad Request')
+})
+
+test.run()
