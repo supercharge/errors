@@ -23,6 +23,9 @@
     "typescript": "~4.8.4",
     "uvu": "~0.5.6"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "main": "dist",
   "types": "dist",
   "files": [
@@ -38,9 +41,6 @@
     "javascript",
     "utilities"
   ],
-  "engines": {
-    "node": ">=16"
-  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
