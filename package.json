@@ -38,6 +38,9 @@
     "javascript",
     "utilities"
   ],
+  "engines": {
+    "node": ">=16"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
