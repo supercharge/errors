@@ -26,12 +26,11 @@ export class HttpError extends BaseError {
    * @param {String} message
    * @param {Number} status
    */
-  constructor (message: string, status?: number, code?: string) {
-    super(message)
+  constructor (message: string, options?: { cause?: any }) {
+    super(message, options)
 
-    this.status = status ?? 500
+    this.status = 500
     this.title = this.name
-    this.code = code
   }
 
   /**
@@ -71,6 +70,19 @@ export class HttpError extends BaseError {
    */
   withTitle (title: string): this {
     this.title = title
+
+    return this
+  }
+
+  /**
+   * Assign the given `stack` trace to this error.
+   *
+   * @param {String} stack
+   *
+   * @returns {this}
+   */
+  withStack (stack: string): this {
+    this.stack = stack
 
     return this
   }
