@@ -1,7 +1,10 @@
 {
   "extends": "@supercharge/tsconfig",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "lib": [
+      "ES2022.Error"
+    ]
   },
   "include": [
     "./src"

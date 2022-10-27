@@ -12,8 +12,7 @@ export class BaseError extends Error {
    * @param message
    * @param status
    */
-  constructor (message?: string, options?: { cause?: any }) {
-    // @ts-expect-error
+  constructor (message?: string, options?: ErrorOptions) {
     super(message, options)
 
     this.name = this.constructor.name
