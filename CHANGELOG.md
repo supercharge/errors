@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [2.0.1](https://github.com/supercharge/errors/compare/v2.0.0...v2.0.1) - 2022-11-17
+
+### Updated
+- `withCode(code?)`: make `code` argument optional
+
+
 ## [2.0.0](https://github.com/supercharge/errors/compare/v1.3.0...v2.0.0) - 2022-11-17
 
 ### Added

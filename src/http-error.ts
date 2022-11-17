@@ -55,7 +55,7 @@ export class HttpError extends BaseError {
    *
    * @returns {HttpError}
    */
-  withCode (code: string): this {
+  withCode (code?: string): this {
     this.code = code
 
     return this
