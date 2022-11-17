@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [2.0.0](https://github.com/supercharge/errors/compare/v1.3.0...v2.0.0) - 2022-1x-xx
+## [2.0.0](https://github.com/supercharge/errors/compare/v1.3.0...v2.0.0) - 2022-11-17
 
 ### Added
 - add an optional `options` argument to the constructor allowing you to pass through a `cause`
@@ -17,6 +17,7 @@
 ### Updated
 - bump dependencies
 - use UVU and expect for testing instead of tap
+- use `@supercharge/eslint-config-typescript` instead of `standard-with-typescript`
 
 ### Breaking Changes
 - require Node.js v16, drop support for Node.js v12 and v14
